@@ -1,6 +1,6 @@
 ![HBNB](https://i.imgur.com/knu0CXq.png)
 
-<center> <h1>0x02. AirBnB clone - MySQL</h1> </center>
+<h1 align="center">0x02. AirBnB clone - MySQL</h1>
 <p align="center"></p>
 
 ---
