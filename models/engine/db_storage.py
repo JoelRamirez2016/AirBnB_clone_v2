@@ -40,10 +40,10 @@ class DBStorage:
         if not cls:
             objs += self.__session.query(State).all()
             objs += self.__session.query(City).all()
-#            objs.append(self.__session.query(User).all())
-#            objs.append(self.__session.query(Place).all())
-#            objs.append(self.__session.query(Amenity).all())
-#            objs.append(self.__session.query(Review).all())
+            objs += self.__session.query(User).all()
+#            objs += self.__session.query(Place).all()
+#            objs += self.__session.query(Amenity).all()
+#            objs += self.__session.query(Review).all()
         else:
             objs += self.query(cls).all()
 
