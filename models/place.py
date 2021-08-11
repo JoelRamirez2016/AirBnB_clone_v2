@@ -5,12 +5,13 @@ from models.amenity import Amenity
 from sqlalchemy import Column, Integer, String, ForeignKey, Float, Table
 from sqlalchemy.orm import relationship
 import os
-
+import models
 
 place_amenity = Table('place_amenity', Base.metadata,
-    Column('place_id', String(60), ForeignKey('places.id'), primary_key=True),
+    Column('place_id', String(60), ForeignKey('places.id'),
+           nullable=False, primary_key=True),
     Column('amenity_id', String(60), ForeignKey('amenities.id'),
-           primary_key=True)
+           nullable=False, primary_key=True)
 )
 
 class Place(BaseModel, Base):
@@ -47,9 +48,11 @@ class Place(BaseModel, Base):
         @property
         def amenities(self):
              """Getter of amenities """
-             return self.amenity_ids
+             return [ame for ame in models.storage.all(Amenity).values()
+                     if ame.id in self.amenity_ids]
 
+        @amenities.setter 
         def amenities(self, amenity):
              """Setter of 1 amenity """
              if type(amenity) == Amenity:
-                 self.amenity_ids.append(amenity)
+                 self.amenity_ids.append(amenity.id)
