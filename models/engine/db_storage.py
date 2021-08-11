@@ -20,13 +20,15 @@ class DBStorage:
     """
     __engine = None
     __session = None
+
     def __init__(self):
         """Initialization of the DB engine"""
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:3306/{}'
-            .format(getenv("HBNB_MYSQL_USER"),
-                    getenv("HBNB_MYSQL_PWD"),
-                    getenv("HBNB_MYSQL_HOST"),
-                    getenv("HBNB_MYSQL_DB")), pool_pre_ping=True)
+                                      .format(getenv("HBNB_MYSQL_USER"),
+                                              getenv("HBNB_MYSQL_PWD"),
+                                              getenv("HBNB_MYSQL_HOST"),
+                                              getenv("HBNB_MYSQL_DB")),
+                                      pool_pre_ping=True)
 
         if getenv("HBNB_ENV") == "test":
             Base.metadata.drop_all(self.__engine)
@@ -49,19 +51,19 @@ class DBStorage:
         return {obj.__class__.__name__ + "." + obj.id: obj for obj in objs}
 
     def new(self, obj):
-       """add the object to the current database session"""
-       self.__session.add(obj)
+        """add the object to the current database session"""
+        self.__session.add(obj)
 
     def save(self):
-       """commit all changes of the current database session"""
-       self.__session.commit()
+        """commit all changes of the current database session"""
+        self.__session.commit()
 
     def delete(self, obj=None):
-       """delete from the current database session obj if not None"""
-       self.__session.delete(obj)
+        """delete from the current database session obj if not None"""
+        self.__session.delete(obj)
 
     def reload(self):
-       """create all tables in the database"""
-       Base.metadata.create_all(self.__engine)
-       session_fact = sessionmaker(expire_on_commit=False, bind=self.__engine)
-       self.__session = scoped_session(session_fact)()
+        """create all tables in the database"""
+        Base.metadata.create_all(self.__engine)
+        session_fact = sessionmaker(expire_on_commit=False, bind=self.__engine)
+        self.__session = scoped_session(session_fact)()
