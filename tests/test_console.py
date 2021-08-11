@@ -30,7 +30,7 @@ class TestConsole(unittest.TestCase):
 class TestCodeFormat(unittest.TestCase):
     """ Class to do pep8 validation. """
     def test_pep8(self):
-        """Method to probe pep8 style"""
+        """Method to prove pep8 style"""
         style = pep8.StyleGuide(quiet=True)
         file1 = 'console.py'
         file2 = 'tests/test_console.py'
