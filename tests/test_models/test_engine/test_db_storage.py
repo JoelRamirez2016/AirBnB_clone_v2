@@ -8,7 +8,31 @@ import os
 
 
 @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db',
-    "skip if not database")
+                 "skip if not database")
+class test_dbstorage(unittest.TestCase):
+    """class to test the db storage methode"""
+    def setUp(cls):
+        """set up test env"""
+        cls.user = User()
+        cls.user.first_name = "Daniel"
+        cls.user.last_name = "Ortega"
+        cls.user.password = "pswd"
+        cls.user.email = "orcha@gmail.com"
+        cls.storage = FileStorage()
+
+    def tearDown(self):
+        """ Remove storage file at end of tests """
+        try:
+            os.remove('file.json')
+        except Exception:
+            pass
+
+    def testAll(self):
+        """ Test-> all function in DBStorage """
+        obj = storage.all()
+        self.assertEqual(type(obj), dict)
+
+
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation. """
     def test_pep8(self):
