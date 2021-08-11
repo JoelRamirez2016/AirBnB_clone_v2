@@ -7,8 +7,7 @@ from unittest.case import skipIf
 import os
 
 
-@unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db',
-                 "skip if not database")
+@unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db', "skip, is not db")
 class test_dbstorage(unittest.TestCase):
     """class to test the db storage methode"""
     def setUp(cls):
