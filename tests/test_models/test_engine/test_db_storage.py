@@ -5,6 +5,10 @@ from models.engine.db_storage import DBStorage
 from models.engine import db_storage
 from unittest.case import skipIf
 import os
+from models.user import User
+from models import user
+from models.engine.file_storage import FileStorage
+from models.engine import file_storage
 
 
 @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db', "skip, is not db")

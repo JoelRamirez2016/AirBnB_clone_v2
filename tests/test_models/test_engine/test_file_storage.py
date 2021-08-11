@@ -8,6 +8,9 @@ import pep8
 from models.engine.file_storage import FileStorage
 from models.engine import file_storage
 from unittest.case import skipIf
+from models import storage
+from models.user import User
+from models.engine.db_storage import DBStorage
 
 
 @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db', 'skip if is db')
