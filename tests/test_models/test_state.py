@@ -2,6 +2,7 @@
 """ Tests for state """
 from tests.test_models.test_base_model import test_basemodel
 from models.state import State
+from models import state
 import unittest
 import pep8
 
@@ -16,8 +17,8 @@ class test_state(test_basemodel):
         self.value = State
 
     def test_name3(self):
-        """ """
-        new = self.value()
+        """ Checks type """
+        new = self.value(name="California")
         self.assertEqual(type(new.name), str)
 
 

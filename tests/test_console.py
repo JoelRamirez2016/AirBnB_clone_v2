@@ -1,17 +1,28 @@
 """ Tests for console """
 import unittest
 import pep8
+from models.base_model import BaseModel
+from console import HBNBCommand
+from models.user import User
+from models.city import City
+from models.state import State
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.engine.file_storage import FileStorage
+import console
 
 
 class TestConsole(unittest.TestCase):
     """ Unittests for the console """
-    def setUpClass(cls):
+    @classmethod
+    def setUpClass(self):
         """Setup for the tests"""
-        cls.console = HBNBCommand()
+        self.console = HBNBCommand()
 
     def tearDown(cls):
         """Cleaning up after each test"""
-        del cls.console
+        pass
 
     def test_module_doc(self):
         """ Method to check for module documentation"""
