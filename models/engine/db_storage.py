@@ -46,7 +46,7 @@ class DBStorage:
             objs += self.__session.query(Amenity).all()
             objs += self.__session.query(Review).all()
         else:
-            objs += self.query(cls).all()
+            objs += self.__session.query(cls).all()
 
         return {obj.__class__.__name__ + "." + obj.id: obj for obj in objs}
 
