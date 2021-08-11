@@ -134,10 +134,8 @@ class HBNBCommand(cmd.Cmd):
             else:
                 kw[a.split("=")[0]] = val
 
-        kw.update(HBNBCommand.classes[args[0]]().to_dict())
         new_instance = HBNBCommand.classes[args[0]](**kw)
-        storage.new(new_instance)
-        storage.save()
+        new_instance.save()
         print(new_instance.id)
 
     def help_create(self):
