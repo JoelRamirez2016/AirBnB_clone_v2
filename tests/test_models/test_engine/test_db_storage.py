@@ -2,6 +2,7 @@
 import unittest
 import pep8
 from models.engine.db_storage import DBStorage
+from models.engine import db_storage
 
 
 class TestCodeFormat(unittest.TestCase):

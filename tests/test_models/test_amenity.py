@@ -2,23 +2,23 @@
 """ Tests for amenity """
 from tests.test_models.test_base_model import test_basemodel
 from models.amenity import Amenity
+from models import amenity
 import unittest
 import pep8
-from models import Amenity
 
 
 class test_Amenity(test_basemodel):
     """ Class to add Unittests for Amenity class """
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """ __init__ method """
         super().__init__(*args, **kwargs)
         self.name = "Amenity"
         self.value = Amenity
 
     def test_name2(self):
-        """ """
-        new = self.value()
+        """ Checks type """
+        new = self.value(name="Amenities")
         self.assertEqual(type(new.name), str)
 
 

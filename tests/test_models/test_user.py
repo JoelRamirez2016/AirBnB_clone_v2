@@ -2,6 +2,7 @@
 """ Tests for user"""
 from tests.test_models.test_base_model import test_basemodel
 from models.user import User
+from models import user
 import unittest
 import pep8
 
@@ -16,23 +17,23 @@ class test_User(test_basemodel):
         self.value = User
 
     def test_first_name(self):
-        """ """
-        new = self.value()
+        """ Checks type """
+        new = self.value(first_name="Dennis")
         self.assertEqual(type(new.first_name), str)
 
     def test_last_name(self):
-        """ """
-        new = self.value()
+        """ Checks type """
+        new = self.value(last_name="Ritchie")
         self.assertEqual(type(new.last_name), str)
 
     def test_email(self):
-        """ """
-        new = self.value()
+        """ Checks type """
+        new = self.value(email="abc@holbertonschool.com")
         self.assertEqual(type(new.email), str)
 
     def test_password(self):
-        """ """
-        new = self.value()
+        """ Checks type """
+        new = self.value(password="abc123")
         self.assertEqual(type(new.password), str)
 
 
