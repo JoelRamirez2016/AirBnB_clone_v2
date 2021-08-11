@@ -3,8 +3,12 @@ import unittest
 import pep8
 from models.engine.db_storage import DBStorage
 from models.engine import db_storage
+from unittest.case import skipIf
+import os
 
 
+@unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db',
+    "skip if not database")
 class TestCodeFormat(unittest.TestCase):
     """Class to do pep8 validation. """
     def test_pep8(self):
