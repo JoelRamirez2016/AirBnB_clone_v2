@@ -4,6 +4,7 @@ import unittest
 from models.base_model import BaseModel
 from models import storage
 import os
+import pep8
 
 
 class test_fileStorage(unittest.TestCase):
@@ -107,3 +108,27 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
+
+
+class TestCodeFormat(unittest.TestCase):
+    """Class to do pep8 validation. """
+    def test_pep8(self):
+        """Method to probe pep8 style"""
+        style = pep8.StyleGuide(quiet=True)
+        file1 = 'models/engine/file_storage.py'
+        file2 = 'tests/test_models/test_engine/test_file_storage.py'
+        result = style.check_files([file1, file2])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
+
+class TestDoc_file_storage(unittest.TestCase):
+    """ Class to check documentation in files."""
+    def test_module_doc(self):
+        """Method to check for module documentation."""
+        self.assertTrue(len(file_storage.__doc__) > 0)
+
+    def test_method_docs(self):
+        """Method to check for method´s documentation."""
+        for func in dir(FileStorage):
+            self.assertTrue(len(func.__doc__) > 0)
