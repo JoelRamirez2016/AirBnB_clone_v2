@@ -5,10 +5,6 @@ from models.engine.db_storage import DBStorage
 from models.engine import db_storage
 from unittest.case import skipIf
 import os
-from models.user import User
-from models import user
-from models.engine.file_storage import FileStorage
-from models.engine import file_storage
 from models import storage
 
 
@@ -16,12 +12,7 @@ class test_dbstorage(unittest.TestCase):
     """class to test the db storage methode"""
     def setUp(cls):
         """set up test"""
-        cls.user = User()
-        cls.user.first_name = "Daniel"
-        cls.user.last_name = "Ortega"
-        cls.user.password = "pswd"
-        cls.user.email = "orcha@gmail.com"
-        cls.storage = DBStorage()
+        pass
 
     def tearDown(self):
         """ Remove storage file at end of tests """
