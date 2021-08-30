@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Define Funtion do_pack and 
+Define Funtion do_pack and
 distributes an archive to your web servers, using the function do_deploy
 """
 from datetime import datetime
@@ -8,9 +8,9 @@ import os
 from fabric.api import local, put, run, env
 from os.path import isfile
 
-
 env.user = "ubuntu"
 env.hosts = ["35.229.27.8", "54.83.116.20"]
+
 
 def do_pack():
     """
@@ -51,6 +51,7 @@ def do_deploy(archive_path):
         return False
 
     return True
+
 
 def deploy():
     """creates and distributes an archive to your web"""
