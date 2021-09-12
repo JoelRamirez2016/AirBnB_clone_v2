@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 from models.base_model import BaseModel, Base
+from models.city import City
 from sqlalchemy import Column, String
 import os
+import models
 
 
 class State(BaseModel, Base):
@@ -18,7 +20,7 @@ class State(BaseModel, Base):
             list_cities = []
 
             for c in cities.values():
-                if self.id == c.place_id:
+                if self.id == c.state_id:
                     list_cities.append(c)
 
             return list_cities
