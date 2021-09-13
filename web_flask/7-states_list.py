@@ -12,6 +12,7 @@ def states_list():
     """display a HTML page with a list of states"""
     return render_template("7-states_list.html", states=storage.all(State))
 
+
 @app.teardown_appcontext
 def teardown(e):
     """close the current session."""
